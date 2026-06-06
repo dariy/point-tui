@@ -21,6 +21,24 @@ A feature-rich TUI client for the Point microblogging platform, built with Go an
 ### Prerequisites
 
 - Go 1.21 or later
+- Git
+- ffmpeg (optional, for video previews)
+
+### One-line Installation
+
+You can install `point-tui` directly using the following command:
+
+```bash
+curl -sSL https://raw.githubusercontent.com/dariy/point-tui/main/install.sh | bash
+```
+
+### Uninstallation
+
+To uninstall `point-tui`:
+
+```bash
+curl -sSL https://raw.githubusercontent.com/dariy/point-tui/main/install.sh | bash -s -- uninstall
+```
 
 ### Building from Source
 
