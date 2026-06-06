@@ -122,6 +122,9 @@ func paneTitle(num int, name string) string {
 	return fmt.Sprintf("[%d] %s", num, name)
 }
 
+// logoChar is the logo mark shown in the top-left of the header bar.
+const logoChar = "◉"
+
 // colorHeader is the background for the top header bar.
 var colorHeader = lipgloss.AdaptiveColor{Light: "#E8E8E8", Dark: "#1C1C1C"}
 
@@ -138,7 +141,10 @@ func HeaderBarView(crumbs []string, author string, width int) string {
 	crumbSty := lipgloss.NewStyle().Foreground(colorStatus).Background(colorHeader)
 	authorSty := lipgloss.NewStyle().Foreground(colorTitle).Background(colorHeader)
 
+	logo := titleSty.Render(logoChar)
+
 	var leftParts []string
+	leftParts = append(leftParts, logo)
 	for i, crumb := range crumbs {
 		if i == 0 {
 			leftParts = append(leftParts, titleSty.Render(crumb))
@@ -148,7 +154,7 @@ func HeaderBarView(crumbs []string, author string, width int) string {
 			leftParts = append(leftParts, crumbSty.Render(crumb))
 		}
 	}
-	left := strings.Join(leftParts, crumbSty.Render(" / "))
+	left := strings.Join(leftParts, crumbSty.Render(" "))
 
 	right := authorSty.Render(author)
 
